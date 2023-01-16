@@ -12,7 +12,7 @@ BEGIN
         BEGIN
             VALUE "Comments", "3proxy - tiny proxy server, https://3proxy.org/\0"
             VALUE "CompanyName", "Vladimir Dubrovin\0"
-            VALUE "FileDescription", "3proxy - tiny proxy server\0"
+            VALUE "FileDescription", "3proxy - tiny proxy server - custom version\0"
             VALUE "FileVersion", RELEASE3PROXY
             VALUE "InternalName", "3proxy\0"
             VALUE "LegalCopyright", "Copyright (C) 2002-" YEAR3PROXY " Vladimir Dubrovin\0"

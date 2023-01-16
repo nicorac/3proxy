@@ -385,12 +385,24 @@ static int h_config(int argc, unsigned char **argv){
 
 static int h_include(int argc, unsigned char **argv){
 	int res;
-	FILE *fp1;
+  FILE *fp1;
+  BOOL optional = FALSE;
+
+  // test if included file is optional (non errors if it doesn't exist)
+  if ((char *)argv[1][0] == '!') {
+    optional = TRUE;
+    *argv[1]++;
+  }
 
 	fp1 = fopen((char *)argv[1], "r");
 	if(!fp1){
-		fprintf(stderr, "Unable to open included file: %s\n", argv[1]);
-		return 1;
+    if (optional) {
+      return 0;
+    }
+    else {
+      fprintf(stderr, "Unable to open included file: %s\n", argv[1]);
+      return 1;
+    }
 	}
 	res = readconfig(fp1);
 	fclose(fp1);
